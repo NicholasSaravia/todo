@@ -10,7 +10,16 @@ export default function Home() {
           <h2>
             Your <div>Projects (4)</div>
           </h2>
-          <UserButton />
+          <UserButton
+            appearance={{
+              elements: {
+                avatarBox: {
+                  height: 50,
+                  width: 50
+                }
+              }
+            }}
+          />
         </div>
       </div>
     </Phone>
