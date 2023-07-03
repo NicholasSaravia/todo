@@ -1,21 +1,28 @@
+import { PageTitle } from '@/components/PageTitle';
 import { Phone } from '@/components/Phone';
-import { UserButton } from '@clerk/nextjs';
+import { UserButton, currentUser } from '@clerk/nextjs';
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+
   return (
     <Phone padding>
-      <div className="rounded-4 flex flex-col gap-2">
-        <h1>Hello, Nick</h1>
-        <div className="text-2xl font-bold flex justify-between items-center gap-6">
-          <h2>
+      <div className="rounded-4 flex flex-col gap-0">
+        <h2 className="text-sm">Hello, {user?.firstName}</h2>
+        <div className="flex justify-between items-center gap-6">
+          <PageTitle>
             Your <div>Projects (4)</div>
-          </h2>
+          </PageTitle>
           <UserButton
             appearance={{
               elements: {
                 avatarBox: {
                   height: 50,
                   width: 50
+                },
+                card: {
+                  maxWidth: 245,
+                  width: '100%'
                 }
               }
             }}
