@@ -25,8 +25,8 @@ export const ProjectCard = ({ i }: { i: number }) => {
       </div>
 
       <div className="flex justify-between m-1">
-        <button className="rounded-full bg-white h-14 w-14 bg-opacity-50">
-          ---
+        <button className="border-white border rounded-full bg-white h-14 w-14 bg-opacity-10">
+          ···
         </button>
         <button className="rounded-full bg-white h-14 w-14 bg-opacity-50">
           ➕
