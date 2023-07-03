@@ -17,7 +17,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body
+          className={inter.className.concat(
+            ' ',
+            'flex justify-center items-center h-[100dvh] bg-gray-300'
+          )}
+        >
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
