@@ -1,10 +1,18 @@
 import { PageTitle } from '@/components/PageTitle';
 import { Phone } from '@/components/Phone';
 import { Projects } from '@/components/page-components/home/Projects';
+import { fetcher } from '@/utils/fetcher';
 import { UserButton, currentUser } from '@clerk/nextjs';
+
+const getData = async () => {
+  return await fetcher('/project', 'GET');
+};
 
 export default async function Home() {
   const user = await currentUser();
+  const projects = await getData();
+
+  console.log(projects);
 
   return (
     <Phone padding>
@@ -14,7 +22,8 @@ export default async function Home() {
           <PageTitle>
             Your{' '}
             <div>
-              Projects <span className="font-normal">(4)</span>
+              Projects{' '}
+              <span className="font-normal">({projects.data.length})</span>
             </div>
           </PageTitle>
           <UserButton

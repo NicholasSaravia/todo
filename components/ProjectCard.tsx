@@ -1,17 +1,11 @@
 import { colors } from '@/lib/colors';
 import { ProgressBar } from './ProgressBar';
+import { Project } from '@prisma/client';
 
-export const ProjectCard = ({ i }: { i: number }) => {
-  const generateRandomBackgroundColor = () => {
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  };
-
-  const color = generateRandomBackgroundColor();
-
+export const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
-      className={`flex flex-col gap-8 pt-6 rounded-[2rem] text-white ${color}`}
+      className={`flex flex-col gap-8 pt-6 rounded-[2rem] text-white ${project.bgColor}`}
     >
       <div className="flex flex-col gap-8 px-3">
         <h3 className="text-3xl font-bold">Holiday in Norway</h3>
