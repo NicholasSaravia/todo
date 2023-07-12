@@ -1,10 +1,15 @@
 import { auth } from '@clerk/nextjs';
 
-export const fetcher = async (
+interface Response<T> {
+  data?: T;
+  error?: string;
+}
+
+export const fetcher = async <T>(
   path: string,
   method: 'GET' | 'POST',
   body?: object
-) => {
+): Promise<Response<T>> => {
   try {
     const { getToken } = auth();
 

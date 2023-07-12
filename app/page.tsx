@@ -3,16 +3,15 @@ import { Phone } from '@/components/Phone';
 import { Projects } from '@/components/page-components/home/Projects';
 import { fetcher } from '@/utils/fetcher';
 import { UserButton, currentUser } from '@clerk/nextjs';
+import { Project } from '@prisma/client';
 
 const getData = async () => {
-  return await fetcher('/project', 'GET');
+  return await fetcher<Project[]>('/project', 'GET');
 };
 
 export default async function Home() {
   const user = await currentUser();
   const projects = await getData();
-
-  console.log(projects);
 
   return (
     <Phone padding>
@@ -23,7 +22,9 @@ export default async function Home() {
             Your{' '}
             <div>
               Projects{' '}
-              <span className="font-normal">({projects.data.length})</span>
+              <span className="font-normal">
+                ({projects?.data?.length == null ? 0 : projects.data.length})
+              </span>
             </div>
           </PageTitle>
           <UserButton
